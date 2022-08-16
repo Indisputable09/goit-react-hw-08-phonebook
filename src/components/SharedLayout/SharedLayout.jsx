@@ -22,6 +22,9 @@ const SharedLayout = () => {
           <Link to="/" state={{ from: location }}>
             Home
           </Link>
+          <Link to="contacts" state={{ from: location }}>
+            My Contacts
+          </Link>
           <Link to="register" state={{ from: location }}>
             Register
           </Link>

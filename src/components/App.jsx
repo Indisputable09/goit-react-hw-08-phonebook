@@ -24,6 +24,7 @@ import { ContacsContext } from 'hooks/ContactsContext';
 import Contacts from 'pages/Contacts';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import Error from 'pages/Error';
 
 export const App = () => {
   const filter = useSelector(getFilterValue);
@@ -111,10 +112,11 @@ export const App = () => {
       >
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route index element={<Contacts />} />
+            <Route index element={<Home />} />
             <Route path="contacts" element={<Contacts />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="*" element={<Error />} />
           </Route>
         </Routes>
       </ContacsContext.Provider>
