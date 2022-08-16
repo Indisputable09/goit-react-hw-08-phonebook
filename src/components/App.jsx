@@ -11,7 +11,7 @@ import { GlobalStyle } from 'components/GlobalStyle';
 // import Filter from 'components/Filter';
 // import ContactList from 'components/ContactList';
 // import ContactsSection from 'components/Section';
-import { CenteredLoader, Section, Title } from './App.styled';
+import { CenteredLoader, Section } from './App.styled';
 import { filterChange, getFilterValue } from 'redux/filterSlice';
 import {
   useGetContactsQuery,
