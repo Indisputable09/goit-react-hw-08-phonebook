@@ -1,14 +1,16 @@
 // import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import { Slide, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+// COMPONENTS
 import { GlobalStyle } from 'components/GlobalStyle';
-import ContactForm from 'components/ContactForm';
-import Filter from 'components/Filter';
-import ContactList from 'components/ContactList';
-import ContactsSection from 'components/Section';
+// import ContactForm from 'components/ContactForm';
+// import Filter from 'components/Filter';
+// import ContactList from 'components/ContactList';
+// import ContactsSection from 'components/Section';
 import { CenteredLoader, Section, Title } from './App.styled';
 import { filterChange, getFilterValue } from 'redux/filterSlice';
 import {
@@ -16,6 +18,12 @@ import {
   useAddContactMutation,
 } from 'redux/contactsSlice';
 import Loader from './Loader';
+import SharedLayout from './SharedLayout';
+import Home from 'pages/Home';
+import { ContacsContext } from 'hooks/ContactsContext';
+import Contacts from 'pages/Contacts';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
 
 export const App = () => {
   const filter = useSelector(getFilterValue);
@@ -92,14 +100,24 @@ export const App = () => {
         transition={Slide}
         closeOnClick
       />
-      <div>
-        <Title>Phonebook</Title>
-        <ContactForm onSubmit={handleSubmit} isPosting={isPosting} />
-      </div>
-      <ContactsSection title="Contacts">
-        <Filter handleChangeFilter={handleChangeFilter} filter={filter} />
-        <ContactList filter={filteredContacts} />
-      </ContactsSection>
+      <ContacsContext.Provider
+        value={{
+          onSubmit: handleSubmit,
+          isPosting,
+          handleChangeFilter,
+          filter,
+          filteredContacts,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Contacts />} />
+            <Route path="contacts" element={<Contacts />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+        </Routes>
+      </ContacsContext.Provider>
     </Section>
   ) : (
     <CenteredLoader>
@@ -107,3 +125,18 @@ export const App = () => {
     </CenteredLoader>
   );
 };
+
+//  <>
+//    <GlobalStyle />
+//    <Routes>
+//      <Route path="/" element={<SharedLayout />}>
+//        <Route index element={<Home />} />
+//        <Route path="movies" element={<Movies />} />
+//        <Route path="movies/:movieId" element={<MovieDetails />}>
+//          <Route path="cast" element={<Cast />} />
+//          <Route path="reviews" element={<Reviews />} />
+//        </Route>
+//        <Route path="*" element={<Error />} />
+//      </Route>
+//    </Routes>
+//  </>;

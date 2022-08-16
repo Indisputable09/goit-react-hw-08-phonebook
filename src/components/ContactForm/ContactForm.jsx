@@ -1,10 +1,11 @@
 import { Formik, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import { Notify } from 'notiflix';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Loader from 'components/Loader';
 import { FormContainer, Input, Label } from './ContactForm.styled';
 import { AddButton } from 'components/Button/Button.styled';
+import { useContacts } from 'hooks/ContactsContext';
 
 export const NAME_MATCH =
   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
@@ -30,7 +31,8 @@ export const FormError = ({ name }) => {
   );
 };
 
-const ContactForm = ({ onSubmit, isPosting }) => {
+const ContactForm = () => {
+  const { onSubmit, isPosting } = useContacts();
   return (
     <Formik
       initialValues={{
@@ -68,9 +70,9 @@ const ContactForm = ({ onSubmit, isPosting }) => {
   );
 };
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  isPosting: PropTypes.bool,
-};
+// ContactForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+//   isPosting: PropTypes.bool,
+// };
 
 export default ContactForm;

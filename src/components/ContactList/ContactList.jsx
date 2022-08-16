@@ -1,12 +1,14 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { List, ListItem } from './ContactList.styled';
 import ContactListItem from 'components/ContactListItem';
+import { useContacts } from 'hooks/ContactsContext';
 
-const ContactList = ({ filter }) => {
-  if (filter) {
+const ContactList = () => {
+  const { filteredContacts } = useContacts();
+  if (filteredContacts) {
     return (
       <List>
-        {filter
+        {filteredContacts
           .sort((firstName, secondName) =>
             firstName.name.localeCompare(secondName.name)
           )
@@ -20,8 +22,8 @@ const ContactList = ({ filter }) => {
   }
 };
 
-ContactList.propTypes = {
-  filter: PropTypes.arrayOf(PropTypes.object),
-};
+// ContactList.propTypes = {
+//   filter: PropTypes.arrayOf(PropTypes.object),
+// };
 
 export default ContactList;
