@@ -1,16 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 // import { useDispatch } from 'react-redux';
-import { useAddUserMutation } from 'redux/authSlice';
+import { useAddUserMutation } from 'redux/authAPI';
+import { loggedIn } from 'redux/authSlice';
 
 const Register = () => {
-  // console.log('~ useGetUserQuery', useAddUserMutation());
-  const [addUser, { data }] = useAddUserMutation();
-  // console.log('~ addUser', addUser());
+  const [addUser, { data: addUserData, isSuccess }] = useAddUserMutation();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(loggedIn(addUserData.token));
+      console.log('~ addUserData.token', addUserData.token);
+    }
+  }, [isSuccess]);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -28,11 +35,9 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     await addUser({ name, email, password });
-    console.log('~ data', data);
-    // dispatch(authOperations.register({ name, email, password }));
-    setName('');
-    setEmail('');
-    setPassword('');
+    // setName('');
+    // setEmail('');
+    // setPassword('');
   };
 
   return (
