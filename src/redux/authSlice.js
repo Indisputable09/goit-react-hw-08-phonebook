@@ -7,10 +7,10 @@ export const authApi = createApi({
   }),
   tagTypes: ['User'],
   endpoints: builder => ({
-    getUser: builder.query({
-      query: () => '/users/current',
-      providesTags: ['User'],
-    }),
+    // getUser: builder.query({
+    //   query: () => '/users/current',
+    //   providesTags: ['User'],
+    // }),
     // getContactById: builder.mutation({
     //   query: id => ({
     //     url: `/contacts/${id}`,
@@ -46,7 +46,7 @@ export const authApi = createApi({
   }),
 });
 export const {
-  useGetUserQuery,
+  // useGetUserQuery,
   useAddUserMutation,
   // useAddContactMutation,
   // useDeleteContactMutation,
