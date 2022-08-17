@@ -30,7 +30,7 @@ export const App = () => {
   const filter = useSelector(getFilterValue);
   const dispatch = useDispatch();
   // const [filter, setFilter] = useState(filterValueReducer);
-  const [addContact, { isLoading: isPosting }] = useAddContactMutation();
+  const [addContact, { data, isLoading: isPosting }] = useAddContactMutation();
   const { data: contacts } = useGetContactsQuery();
 
   const handleSubmit = async e => {
@@ -61,6 +61,7 @@ export const App = () => {
         return;
       }
       await addContact(contact);
+      console.log('~ data', data);
       toast.success('Contact added successfully!');
       e.target.reset();
     } catch (error) {
