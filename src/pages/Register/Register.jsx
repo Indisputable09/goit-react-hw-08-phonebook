@@ -17,7 +17,7 @@ const Register = () => {
       dispatch(loggedIn(addUserData.token));
       console.log('~ addUserData.token', addUserData.token);
     }
-  }, [isSuccess]);
+  }, [addUserData, dispatch, isSuccess]);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
