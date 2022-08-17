@@ -1,10 +1,10 @@
 import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
-import { useGetUserQuery, useAddUserMutation } from 'redux/authSlice';
+import { useAddUserMutation } from 'redux/authSlice';
 
 const Register = () => {
   // console.log('~ useGetUserQuery', useAddUserMutation());
-  const [addUser, { isLoading: isAddingUser, data }] = useAddUserMutation();
+  const [addUser, { data }] = useAddUserMutation();
   // console.log('~ addUser', addUser());
 
   // const dispatch = useDispatch();
