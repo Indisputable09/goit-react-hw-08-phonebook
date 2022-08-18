@@ -7,7 +7,7 @@ import { ButtonsBlock, Line } from './ContactListItem.styled';
 import {
   useDeleteContactMutation,
   useUpdateContactMutation,
-} from 'redux/contactsSlice';
+} from 'redux/contacts/contactsSlice';
 import Button from 'components/Button';
 import Loader from 'components/Loader';
 import Modal from 'components/Modal';

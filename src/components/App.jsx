@@ -16,7 +16,7 @@ import { filterChange, getFilterValue } from 'redux/filterSlice';
 import {
   useGetContactsQuery,
   useAddContactMutation,
-} from 'redux/contactsSlice';
+} from 'redux/contacts/contactsSlice';
 import Loader from './Loader';
 import SharedLayout from './SharedLayout';
 import Home from 'pages/Home';
