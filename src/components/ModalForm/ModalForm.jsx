@@ -9,7 +9,7 @@ import { FormBlock, Input, Label } from './ModalForm.styled';
 import Loader from 'components/Loader';
 import { EditButton } from 'components/Button/Button.styled';
 
-const ModalForm = ({ onSubmit, nameValue, phoneValue, isUpdaiting }) => {
+const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting }) => {
   const handleSubmit = async (values, actions) => {
     await onSubmit(values);
 
@@ -21,7 +21,7 @@ const ModalForm = ({ onSubmit, nameValue, phoneValue, isUpdaiting }) => {
     <Formik
       initialValues={{
         name: nameValue,
-        phone: phoneValue,
+        number: numberValue,
       }}
       validationSchema={SignupSchema}
       onSubmit={handleSubmit}
@@ -43,7 +43,7 @@ const ModalForm = ({ onSubmit, nameValue, phoneValue, isUpdaiting }) => {
           <Input
             id="phone"
             type="tel"
-            name="phone"
+            name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             placeholder="Number"
             autoComplete="off"
@@ -52,7 +52,7 @@ const ModalForm = ({ onSubmit, nameValue, phoneValue, isUpdaiting }) => {
           <FormError name="number" />
           <EditButton
             type="submit"
-            disabled={values.name === nameValue && values.phone === phoneValue}
+            disabled={values.name === nameValue && values.phone === numberValue}
           >
             {isUpdaiting ? <Loader /> : 'Edit'}
           </EditButton>
@@ -65,7 +65,7 @@ const ModalForm = ({ onSubmit, nameValue, phoneValue, isUpdaiting }) => {
 ModalForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   nameValue: PropTypes.string.isRequired,
-  phoneValue: PropTypes.string.isRequired,
+  numberValue: PropTypes.string.isRequired,
   isUpdaiting: PropTypes.bool,
 };
 

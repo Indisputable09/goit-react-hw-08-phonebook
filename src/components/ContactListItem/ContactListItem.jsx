@@ -15,7 +15,7 @@ import ModalForm from 'components/ModalForm';
 import { CloseButton } from 'components/Button/Button.styled';
 import { getShowModal, showModalChange } from 'redux/modalSlice';
 
-const ContactListItem = ({ name, phone, id }) => {
+const ContactListItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const [updateContact, { isLoading: isUpdaiting }] =
     useUpdateContactMutation();
@@ -51,7 +51,7 @@ const ContactListItem = ({ name, phone, id }) => {
   return (
     <>
       <Line>
-        {name}: <span>{phone}</span>
+        {name}: <span>{number}</span>
       </Line>
       <ButtonsBlock>
         <Button click={() => handleShowModal()}>Edit</Button>
@@ -66,7 +66,7 @@ const ContactListItem = ({ name, phone, id }) => {
           </CloseButton>
           <ModalForm
             nameValue={name}
-            phoneValue={phone}
+            numberValue={number}
             onSubmit={handleUpdateContact}
             isUpdaiting={isUpdaiting}
           />
@@ -78,7 +78,7 @@ const ContactListItem = ({ name, phone, id }) => {
 
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
 

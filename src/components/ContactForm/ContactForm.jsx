@@ -17,7 +17,7 @@ export const nameNumber =
 export const requiredError = 'This field is required';
 export const SignupSchema = object().shape({
   name: string().required(requiredError).matches(NAME_MATCH, nameError),
-  phone: string()
+  number: string()
     .required(requiredError)
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
@@ -37,7 +37,7 @@ const ContactForm = () => {
     <Formik
       initialValues={{
         name: '',
-        phone: '',
+        number: '',
       }}
       validationSchema={SignupSchema}
     >
@@ -56,7 +56,7 @@ const ContactForm = () => {
         <Input
           id="number"
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           placeholder="Number"
           required
