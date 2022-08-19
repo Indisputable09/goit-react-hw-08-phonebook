@@ -16,6 +16,8 @@ import { CloseButton } from 'components/Button/Button.styled';
 import { getShowModal, showModalChange } from 'redux/modalSlice';
 
 const ContactListItem = ({ name, number, id }) => {
+  // console.log('~ number', number);
+  // console.log('~ name', name);
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const [updateContact, { isLoading: isUpdaiting }] =
     useUpdateContactMutation();
@@ -65,6 +67,7 @@ const ContactListItem = ({ name, number, id }) => {
             <AiOutlineCloseCircle size={20} />
           </CloseButton>
           <ModalForm
+            id={id}
             nameValue={name}
             numberValue={number}
             onSubmit={handleUpdateContact}

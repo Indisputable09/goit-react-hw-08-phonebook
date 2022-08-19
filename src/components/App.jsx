@@ -49,7 +49,7 @@ export const App = () => {
       const number = e.target.number.value;
       const contactsNames = contacts.find(contact => contact.name === name);
       const contactsNumbers = contacts.find(
-        contact => contact.phone === number
+        contact => contact.number === number
       );
       // const contact = { id: nanoid(), name, number };
       const contact = { name, number };

@@ -9,8 +9,11 @@ import { FormBlock, Input, Label } from './ModalForm.styled';
 import Loader from 'components/Loader';
 import { EditButton } from 'components/Button/Button.styled';
 
-const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting }) => {
+const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting, id }) => {
+  console.log('~ id', id);
+  // console.log('~ nameValue', nameValue);
   const handleSubmit = async (values, actions) => {
+    // console.log('~ values', values);
     await onSubmit(values);
 
     // actions.setSubmitting(false);
@@ -52,7 +55,9 @@ const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting }) => {
           <FormError name="number" />
           <EditButton
             type="submit"
-            disabled={values.name === nameValue && values.phone === numberValue}
+            disabled={
+              values.name === nameValue && values.number === numberValue
+            }
           >
             {isUpdaiting ? <Loader /> : 'Edit'}
           </EditButton>
