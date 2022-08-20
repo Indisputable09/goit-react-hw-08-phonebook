@@ -5,7 +5,12 @@ import { Notify } from 'notiflix';
 import Loader from 'components/Loader';
 import { FormContainer, Input, Label } from './ContactForm.styled';
 import { AddButton } from 'components/Button/Button.styled';
-import { useContacts } from 'hooks/ContactsContext';
+import {
+  useAddContactMutation,
+  useGetContactsQuery,
+} from 'redux/contacts/contactsSlice';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 export const NAME_MATCH =
   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
@@ -32,7 +37,48 @@ export const FormError = ({ name }) => {
 };
 
 const ContactForm = () => {
-  const { onSubmit, isPosting } = useContacts();
+  const [addContact, { data: contactData, isLoading: isPosting }] =
+    useAddContactMutation();
+  const { data: contacts } = useGetContactsQuery();
+  const handleSubmit = async e => {
+    try {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const number = e.target.number.value;
+      const contactsNames = contacts.find(contact => contact.name === name);
+      const contactsNumbers = contacts.find(
+        contact => contact.number === number
+      );
+      const contact = { name, number };
+
+      if (contactsNames) {
+        Swal.fire({
+          title: 'Error!',
+          text: `Sorry, ${name} is already in your contacts`,
+          icon: 'error',
+          confirmButtonText: 'Got it',
+        });
+        return;
+      }
+      if (contactsNumbers) {
+        Swal.fire({
+          title: 'Error!',
+          text: `Sorry, ${number} is already in your contacts`,
+          icon: 'error',
+          confirmButtonText: 'Got it',
+        });
+        return;
+      }
+      await addContact(contact);
+      console.log('~ data', contactData);
+      toast.success('Contact added successfully!');
+      e.target.reset();
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong. Try again.');
+    }
+  };
+
   return (
     <Formik
       initialValues={{
@@ -41,7 +87,7 @@ const ContactForm = () => {
       }}
       validationSchema={SignupSchema}
     >
-      <FormContainer onSubmit={onSubmit}>
+      <FormContainer onSubmit={handleSubmit}>
         <Label htmlFor="name">Name</Label>
         <Input
           id="name"

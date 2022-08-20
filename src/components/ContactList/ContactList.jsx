@@ -1,29 +1,30 @@
 // import PropTypes from 'prop-types';
 import { List, ListItem } from './ContactList.styled';
 import ContactListItem from 'components/ContactListItem';
-import { useContacts } from 'hooks/ContactsContext';
+import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
+import { useSelector } from 'react-redux';
+import { getFilterValue } from 'redux/filterSlice';
 // import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 // import { useSelector } from 'react-redux';
 // import { getFilterValue } from 'redux/filterSlice';
 
 const ContactList = () => {
-  // const { data: contacts } = useGetContactsQuery();
-  // const filter = useSelector(getFilterValue);
-  const { filteredContacts } = useContacts();
+  const { data: contacts } = useGetContactsQuery();
+  const filter = useSelector(getFilterValue);
+  const createFilter = () => {
+    const normalizedFilterValue = filter.toLocaleLowerCase();
+    if (contacts) {
+      const filteredContacts = contacts.filter(
+        contact =>
+          contact.name.toLocaleLowerCase().includes(normalizedFilterValue) ||
+          contact.number.toString().includes(normalizedFilterValue)
+      );
+      return filteredContacts;
+    }
+  };
 
-  // const createFilter = () => {
-  //   const normalizedFilterValue = filter.toLocaleLowerCase();
-  //   if (contacts) {
-  //     const filteredContacts = contacts.filter(
-  //       contact =>
-  //         contact.name.toLocaleLowerCase().includes(normalizedFilterValue) ||
-  //         contact.phone.toString().includes(normalizedFilterValue)
-  //     );
-  //     return filteredContacts;
-  //   }
-  // };
+  const filteredContacts = createFilter();
 
-  // const filteredContacts = createFilter();
   if (filteredContacts) {
     return (
       <List>

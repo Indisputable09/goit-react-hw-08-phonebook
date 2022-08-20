@@ -1,9 +1,16 @@
-import { useContacts } from 'hooks/ContactsContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterChange, getFilterValue } from 'redux/filterSlice';
 // import PropTypes from 'prop-types';
 import { Input } from './Filter.styled';
 
 const Filter = () => {
-  const { handleChangeFilter, filter } = useContacts();
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilterValue);
+  const handleChangeFilter = e => {
+    const inputValue = e.target.value;
+    dispatch(filterChange(inputValue));
+    // setFilter(inputValue);
+  };
   return (
     <Input
       type="text"
