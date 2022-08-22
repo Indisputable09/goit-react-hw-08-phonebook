@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   FormError,
@@ -9,12 +10,13 @@ import { FormBlock, Input, Label } from './ModalForm.styled';
 import Loader from 'components/Loader';
 import { EditButton } from 'components/Button/Button.styled';
 
-const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting, id }) => {
-  console.log('~ id', id);
-  // console.log('~ nameValue', nameValue);
+const ModalForm = ({ onSubmit, isUpdaiting }) => {
+  const name = useSelector(state => state.modal.name);
+  const number = useSelector(state => state.modal.number);
+  const id = useSelector(state => state.modal.id);
+
   const handleSubmit = async (values, actions) => {
-    // console.log('~ values', values);
-    await onSubmit(values);
+    await onSubmit({ name: values.name, number: values.number, id });
 
     // actions.setSubmitting(false);
     // actions.resetForm();
@@ -23,8 +25,8 @@ const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting, id }) => {
   return (
     <Formik
       initialValues={{
-        name: nameValue,
-        number: numberValue,
+        name,
+        number,
       }}
       validationSchema={SignupSchema}
       onSubmit={handleSubmit}
@@ -55,9 +57,7 @@ const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting, id }) => {
           <FormError name="number" />
           <EditButton
             type="submit"
-            disabled={
-              values.name === nameValue && values.number === numberValue
-            }
+            disabled={values.name === name && values.number === number}
           >
             {isUpdaiting ? <Loader /> : 'Edit'}
           </EditButton>
@@ -69,8 +69,8 @@ const ModalForm = ({ onSubmit, nameValue, numberValue, isUpdaiting, id }) => {
 
 ModalForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  nameValue: PropTypes.string.isRequired,
-  numberValue: PropTypes.string.isRequired,
+  // nameValue: PropTypes.string.isRequired,
+  // numberValue: PropTypes.string.isRequired,
   isUpdaiting: PropTypes.bool,
 };
 

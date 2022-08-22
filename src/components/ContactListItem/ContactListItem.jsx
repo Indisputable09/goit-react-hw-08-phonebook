@@ -16,18 +16,14 @@ import { CloseButton } from 'components/Button/Button.styled';
 import { getShowModal, showModalChange } from 'redux/modalSlice';
 
 const ContactListItem = ({ name, number, id }) => {
-  // console.log('~ number', number);
-  // console.log('~ name', name);
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const [updateContact, { isLoading: isUpdaiting }] =
     useUpdateContactMutation();
   const showModal = useSelector(getShowModal);
   const dispatch = useDispatch();
-  // const [showModal, setShowModal] = useState(modalShow);
 
   const handleShowModal = () => {
-    // setShowModal(!showModal);
-    dispatch(showModalChange());
+    dispatch(showModalChange({ name, number, id }));
   };
 
   const handleDelete = async () => {
@@ -41,8 +37,8 @@ const ContactListItem = ({ name, number, id }) => {
 
   const handleUpdateContact = async fields => {
     try {
-      await updateContact({ id, ...fields });
-      // setShowModal(!showModal);
+      console.log('~ fields', fields);
+      await updateContact(fields);
       dispatch(showModalChange());
       toast.success('Contact edited successfully!');
     } catch (error) {
@@ -66,13 +62,7 @@ const ContactListItem = ({ name, number, id }) => {
           <CloseButton onClick={handleShowModal}>
             <AiOutlineCloseCircle size={20} />
           </CloseButton>
-          <ModalForm
-            id={id}
-            nameValue={name}
-            numberValue={number}
-            onSubmit={handleUpdateContact}
-            isUpdaiting={isUpdaiting}
-          />
+          <ModalForm onSubmit={handleUpdateContact} isUpdaiting={isUpdaiting} />
         </Modal>
       )}
     </>

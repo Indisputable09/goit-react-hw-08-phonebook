@@ -4,9 +4,6 @@ import ContactListItem from 'components/ContactListItem';
 import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 import { useSelector } from 'react-redux';
 import { getFilterValue } from 'redux/filterSlice';
-// import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
-// import { useSelector } from 'react-redux';
-// import { getFilterValue } from 'redux/filterSlice';
 
 const ContactList = () => {
   const { data: contacts } = useGetContactsQuery();
