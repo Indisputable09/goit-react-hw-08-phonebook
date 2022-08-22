@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -9,21 +9,25 @@ import { GlobalStyle } from 'components/GlobalStyle';
 // import Filter from 'components/Filter';
 // import ContactList from 'components/ContactList';
 // import ContactsSection from 'components/Section';
-import { /*CenteredLoader */ Section } from './App.styled';
+import { Section } from './App.styled';
 // import Loader from './Loader';
 import SharedLayout from './SharedLayout';
-import Home from 'pages/Home';
-// import Contacts from 'pages/Contacts';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
-import Error from 'pages/Error';
 import { lazy, useEffect } from 'react';
-import { authOperations } from 'redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
+// const SharedLayout = lazy(() => import('./SharedLayout'));
+const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));
+const Login = lazy(() => import('pages/Login'));
+const Register = lazy(() => import('pages/Register'));
+const Error = lazy(() => import('pages/Error'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
@@ -43,11 +47,33 @@ export const App = () => {
         closeOnClick
       />
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
+        <Route path="/" element={<SharedLayout user={isLoggedIn} />}>
           <Route index element={<Home />} />
-          <Route path="contacts" element={<Contacts />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute user={isLoggedIn}>
+                <Contacts />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute restricted redirectTo="/contacts" user={isLoggedIn}>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <PublicRoute restricted redirectTo="/contacts" user={isLoggedIn}>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          {/* <Route path="register" element={<Register />} /> */}
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

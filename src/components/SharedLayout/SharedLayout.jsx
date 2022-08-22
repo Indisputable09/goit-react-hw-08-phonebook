@@ -3,10 +3,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Navigation, Link } from './SharedLayout.styled';
 import { Box } from 'components/Box';
 import Loader from 'components/Loader';
+import { useDispatch } from 'react-redux';
+import { authOperations } from 'redux/auth';
+import AuthNav from 'components/AuthNav';
 
-const SharedLayout = () => {
+const SharedLayout = ({ user }) => {
   const location = useLocation();
-  // const backToMovieSearch = location.state?.from ?? '/movies';
+  const dispatch = useDispatch();
+
   return (
     <>
       <Box
@@ -25,12 +29,16 @@ const SharedLayout = () => {
           <Link to="contacts" state={{ from: location }}>
             My Contacts
           </Link>
-          <Link to="register" state={{ from: location }}>
-            Register
-          </Link>
-          <Link to="login" state={{ from: location }}>
-            Login
-          </Link>
+          {user ? (
+            <button
+              type="button"
+              onClick={() => dispatch(authOperations.logOut())}
+            >
+              Log out
+            </button>
+          ) : (
+            <AuthNav />
+          )}
         </Navigation>
       </Box>
       <main>

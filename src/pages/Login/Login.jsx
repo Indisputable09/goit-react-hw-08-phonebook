@@ -51,9 +51,6 @@ const Login = () => {
         </label>
 
         <button type="submit">Log in</button>
-        <button type="button" onClick={() => dispatch(authOperations.logOut())}>
-          Log out
-        </button>
       </form>
     </div>
   );
