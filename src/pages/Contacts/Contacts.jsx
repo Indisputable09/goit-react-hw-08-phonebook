@@ -1,23 +1,24 @@
-// import { skipToken } from '@reduxjs/toolkit/query';
 import { CenteredLoader, Title } from 'components/App.styled';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 import Loader from 'components/Loader';
 import ContactsSection from 'components/Section/Section';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 // import { getShowModal } from 'redux/modalSlice';
 
 const Contacts = () => {
-  // const showModal = useSelector(getShowModal);
-  // console.log('~ showModal', showModal);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // console.log('~ isLoggedIn', isLoggedIn);
-  const { data: contacts } = useGetContactsQuery({ skip: !isLoggedIn });
-  console.log('~ contacts', contacts);
-  // useEffect(() => {}, [third]);
+  const { data: contacts, refetch } = useGetContactsQuery();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      refetch();
+    }
+  }, [isLoggedIn, refetch]);
 
   return contacts ? (
     <>
