@@ -8,6 +8,8 @@ import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
 
 const Contacts = () => {
   const { data: contacts } = useGetContactsQuery();
+  // useEffect(() => {}, [third]);
+
   return contacts ? (
     <>
       <div>
