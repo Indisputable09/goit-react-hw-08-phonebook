@@ -1,7 +1,5 @@
 import { Formik, ErrorMessage } from 'formik';
-import { object, string } from 'yup';
 import { Notify } from 'notiflix';
-// import PropTypes from 'prop-types';
 import Loader from 'components/Loader';
 import { FormContainer, Input, Label } from './ContactForm.styled';
 import { AddButton } from 'components/Button/Button.styled';
@@ -11,24 +9,25 @@ import {
 } from 'redux/contacts/contactsSlice';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { NAME_MATCH, SignupSchema } from 'constants/formConstants';
 
-export const NAME_MATCH =
-  "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
+// export const NAME_MATCH =
+//   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 
-export const nameError =
-  "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
-export const nameNumber =
-  'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +';
-export const requiredError = 'This field is required';
-export const SignupSchema = object().shape({
-  name: string().required(requiredError).matches(NAME_MATCH, nameError),
-  number: string()
-    .required(requiredError)
-    .matches(
-      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-      nameNumber
-    ),
-});
+// export const nameError =
+//   "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan";
+// export const nameNumber =
+//   'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +';
+// export const requiredError = 'This field is required';
+// export const SignupSchema = object().shape({
+//   name: string().required(requiredError).matches(NAME_MATCH, nameError),
+//   number: string()
+//     .required(requiredError)
+//     .matches(
+//       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
+//       nameNumber
+//     ),
+// });
 
 export const FormError = ({ name }) => {
   return (
@@ -115,10 +114,5 @@ const ContactForm = () => {
     </Formik>
   );
 };
-
-// ContactForm.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-//   isPosting: PropTypes.bool,
-// };
 
 export default ContactForm;

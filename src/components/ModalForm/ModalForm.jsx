@@ -1,11 +1,8 @@
 import { Formik } from 'formik';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  FormError,
-  NAME_MATCH,
-  SignupSchema,
-} from 'components/ContactForm/ContactForm';
+import { NAME_MATCH, SignupSchema } from 'constants/formConstants';
+import { FormError } from 'components/ContactForm/ContactForm';
 import { FormBlock, Input, Label } from './ModalForm.styled';
 import Loader from 'components/Loader';
 import { EditButton } from 'components/Button/Button.styled';
@@ -17,9 +14,6 @@ const ModalForm = ({ onSubmit, isUpdaiting }) => {
 
   const handleSubmit = async (values, actions) => {
     await onSubmit({ name: values.name, number: values.number, id });
-
-    // actions.setSubmitting(false);
-    // actions.resetForm();
   };
 
   return (
@@ -69,8 +63,6 @@ const ModalForm = ({ onSubmit, isUpdaiting }) => {
 
 ModalForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  // nameValue: PropTypes.string.isRequired,
-  // numberValue: PropTypes.string.isRequired,
   isUpdaiting: PropTypes.bool,
 };
 

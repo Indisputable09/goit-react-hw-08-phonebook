@@ -17,7 +17,6 @@ import { authOperations, authSelectors } from 'redux/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
-// const SharedLayout = lazy(() => import('./SharedLayout'));
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));
 const Login = lazy(() => import('pages/Login'));

@@ -9,7 +9,7 @@ import {
   useUpdateContactMutation,
 } from 'redux/contacts/contactsSlice';
 import Button from 'components/Button';
-import Loader from 'components/Loader';
+// import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import ModalForm from 'components/ModalForm';
 import { CloseButton } from 'components/Button/Button.styled';
@@ -52,9 +52,10 @@ const ContactListItem = ({ name, number, id }) => {
         {name}: <span>{number}</span>
       </Line>
       <ButtonsBlock>
-        <Button click={() => handleShowModal()}>Edit</Button>
-        <Button click={handleDelete} isDeleting={isDeleting}>
-          {isDeleting ? <Loader /> : 'Delete'}
+        <Button onClick={() => handleShowModal()}>Edit</Button>
+        <Button onClick={handleDelete} disabled={isDeleting}>
+          Delete
+          {/* {isDeleting ? <Loader /> : 'Delete'} */}
         </Button>
       </ButtonsBlock>
       {showModal && (
