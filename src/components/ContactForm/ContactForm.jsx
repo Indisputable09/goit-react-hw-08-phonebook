@@ -1,5 +1,7 @@
 import { Formik, ErrorMessage } from 'formik';
 import { Notify } from 'notiflix';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 import Loader from 'components/Loader';
 import { FormContainer, Input, Label } from './ContactForm.styled';
 import { AddButton } from 'components/Button/Button.styled';
@@ -7,8 +9,6 @@ import {
   useAddContactMutation,
   useGetContactsQuery,
 } from 'redux/contacts/contactsSlice';
-import Swal from 'sweetalert2';
-import { toast } from 'react-toastify';
 import { NAME_MATCH, SignupSchema } from 'constants/formConstants';
 
 export const FormError = ({ name }) => {
@@ -18,8 +18,7 @@ export const FormError = ({ name }) => {
 };
 
 const ContactForm = () => {
-  const [addContact, { data: contactData, isLoading: isPosting }] =
-    useAddContactMutation();
+  const [addContact, { isLoading: isPosting }] = useAddContactMutation();
   const { data: contacts } = useGetContactsQuery();
 
   const handleSubmit = async e => {
