@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { toast } from 'react-toastify';
@@ -9,11 +8,12 @@ import {
   useUpdateContactMutation,
 } from 'redux/contacts/contactsSlice';
 import Button from 'components/Button';
-// import Loader from 'components/Loader';
+import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import ModalForm from 'components/ModalForm';
 import { CloseButton } from 'components/Button/Button.styled';
-import { getShowModal, showModalChange } from 'redux/modalSlice';
+import { showModalChange } from 'redux/modal/modalSlice';
+import { getShowModal } from 'redux/modal/modalSelectors';
 
 const ContactListItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
@@ -31,18 +31,17 @@ const ContactListItem = ({ name, number, id }) => {
       await deleteContact(id);
       toast.success('Contact deleted successfully!');
     } catch (error) {
-      toast.error('Something went wrong. Try again.');
+      toast.error('Something went wrong. Please, try again.');
     }
   };
 
   const handleUpdateContact = async fields => {
     try {
-      console.log('~ fields', fields);
       await updateContact(fields);
       dispatch(showModalChange());
       toast.success('Contact edited successfully!');
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong. Please, try again.');
     }
   };
 
@@ -52,10 +51,9 @@ const ContactListItem = ({ name, number, id }) => {
         {name}: <span>{number}</span>
       </Line>
       <ButtonsBlock>
-        <Button onClick={() => handleShowModal()}>Edit</Button>
+        <Button onClick={handleShowModal}>Edit</Button>
         <Button onClick={handleDelete} disabled={isDeleting}>
-          Delete
-          {/* {isDeleting ? <Loader /> : 'Delete'} */}
+          {isDeleting ? <Loader /> : 'Delete'}
         </Button>
       </ButtonsBlock>
       {showModal && (

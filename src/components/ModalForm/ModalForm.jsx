@@ -6,14 +6,19 @@ import { FormError } from 'components/ContactForm/ContactForm';
 import { FormBlock, Input, Label } from './ModalForm.styled';
 import Loader from 'components/Loader';
 import { EditButton } from 'components/Button/Button.styled';
+import {
+  getContactName,
+  getContactNumber,
+  getContactid,
+} from 'redux/modal/modalSelectors';
 
 const ModalForm = ({ onSubmit, isUpdaiting }) => {
-  const name = useSelector(state => state.modal.name);
-  const number = useSelector(state => state.modal.number);
-  const id = useSelector(state => state.modal.id);
+  const name = useSelector(getContactName);
+  const number = useSelector(getContactNumber);
+  const id = useSelector(getContactid);
 
-  const handleSubmit = async (values, actions) => {
-    await onSubmit({ name: values.name, number: values.number, id });
+  const handleSubmit = async ({ name, number }, actions) => {
+    await onSubmit({ name, number, id });
   };
 
   return (

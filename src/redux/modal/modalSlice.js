@@ -20,7 +20,3 @@ export const modalSlice = createSlice({
 });
 
 export const { showModalChange } = modalSlice.actions;
-
-// // SELECTORS
-
-export const getShowModal = state => state.modal.showModal;

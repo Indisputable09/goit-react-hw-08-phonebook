@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import { List, ListItem } from './ContactList.styled';
 import ContactListItem from 'components/ContactListItem';
 import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
@@ -8,6 +7,7 @@ import { getFilterValue } from 'redux/filterSlice';
 const ContactList = () => {
   const { data: contacts } = useGetContactsQuery();
   const filter = useSelector(getFilterValue);
+
   const createFilter = () => {
     const normalizedFilterValue = filter.toLocaleLowerCase();
     if (contacts) {
@@ -38,9 +38,5 @@ const ContactList = () => {
     );
   }
 };
-
-// ContactList.propTypes = {
-//   filter: PropTypes.arrayOf(PropTypes.object),
-// };
 
 export default ContactList;
