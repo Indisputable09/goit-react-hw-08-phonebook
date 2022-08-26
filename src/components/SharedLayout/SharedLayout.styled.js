@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const Navigation = styled.nav`
   display: flex;
+  justify-content: space-between;
   gap: ${p => p.theme.space[5]}px;
 `;
 
@@ -14,10 +15,21 @@ export const Link = styled(NavLink)`
 
   :hover,
   :focus {
-    color: ${p => p.theme.colors.orangered};
+    color: ${p => p.theme.colors.yellow};
   }
 
   &.active {
-    color: ${p => p.theme.colors.orangered};
+    color: ${p => p.theme.colors.white};
   }
+`;
+
+export const AuthNavBlock = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: ${p => p.theme.space[5]}px;
+`;
+export const MainNavBlock = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: ${p => p.theme.space[5]}px;
 `;

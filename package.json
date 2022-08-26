@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://Indisputable09.github.io/goit-react-hw-08-phonebook/",
   "dependencies": {
+    "@mui/material": "^5.10.2",
+    "@mui/styled-engine-sc": "^5.10.1",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",

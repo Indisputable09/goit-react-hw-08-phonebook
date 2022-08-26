@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { Navigation } from './SharedLayout.styled';
+import { AuthNavBlock, MainNavBlock, Navigation } from './SharedLayout.styled';
 import { Box } from 'components/Box';
 import Loader from 'components/Loader';
 import { authOperations } from 'redux/auth';
@@ -14,16 +14,19 @@ const SharedLayout = ({ user }) => {
   return (
     <>
       <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="flex-start"
         px="4"
-        bg="white"
+        bg="blue"
         boxShadow="main"
         as="header"
+        position="fixed"
+        top="0"
+        left="0"
+        width="100%"
       >
         <Navigation>
-          <MainNav />
+          <MainNavBlock>
+            <MainNav />
+          </MainNavBlock>
           {user ? (
             <button
               type="button"
@@ -32,7 +35,9 @@ const SharedLayout = ({ user }) => {
               Log out
             </button>
           ) : (
-            <AuthNav />
+            <AuthNavBlock>
+              <AuthNav />
+            </AuthNavBlock>
           )}
         </Navigation>
       </Box>
