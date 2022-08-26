@@ -24,9 +24,9 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     dispatch(authOperations.register({ name, email, password }));
-    // setName('');
-    // setEmail('');
-    // setPassword('');
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   return (

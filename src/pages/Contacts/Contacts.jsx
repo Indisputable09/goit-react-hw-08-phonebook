@@ -1,14 +1,10 @@
-import { CenteredLoader, Title } from 'components/App.styled';
-import ContactForm from 'components/ContactForm';
-import ContactList from 'components/ContactList';
-import Filter from 'components/Filter';
+import { CenteredLoader } from 'components/App.styled';
 import Loader from 'components/Loader';
-import ContactsSection from 'components/Section/Section';
+import PhonebookContent from 'components/PhonebookContent';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 import { useGetContactsQuery } from 'redux/contacts/contactsSlice';
-// import { getShowModal } from 'redux/modalSlice';
 
 const Contacts = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -21,16 +17,7 @@ const Contacts = () => {
   }, [isLoggedIn, refetch]);
 
   return contacts ? (
-    <>
-      <div>
-        <Title>Phonebook</Title>
-        <ContactForm />
-      </div>
-      <ContactsSection title="Contacts">
-        <Filter />
-        <ContactList />
-      </ContactsSection>
-    </>
+    <PhonebookContent />
   ) : (
     <CenteredLoader>
       <Loader size={50} />

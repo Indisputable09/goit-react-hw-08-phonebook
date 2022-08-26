@@ -7,9 +7,6 @@ export const modalSlice = createSlice({
     showModal: false,
   },
   reducers: {
-    // showModalChange(state) {
-    //   state.showModal = !state.showModal;
-    // },
     showModalChange(state, action) {
       state.name = action.payload?.name;
       state.number = action.payload?.number;

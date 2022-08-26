@@ -1,12 +1,12 @@
+import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { authOperations, authSelectors } from 'redux/auth';
 // COMPONENTS
 import { GlobalStyle } from 'components/GlobalStyle';
 import { Section } from './App.styled';
 import SharedLayout from './SharedLayout';
-import { lazy, useEffect } from 'react';
-import { authOperations, authSelectors } from 'redux/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Toast from './Toast';
@@ -25,8 +25,6 @@ export const App = () => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  // return
-  // contacts ?
   return (
     <Section>
       <GlobalStyle />
@@ -58,30 +56,9 @@ export const App = () => {
               </PublicRoute>
             }
           />
-          {/* <Route path="register" element={<Register />} /> */}
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </Section>
   );
-  // : (
-  // <CenteredLoader>
-  //   <Loader size={50} />
-  // </CenteredLoader>
-  // );
 };
-
-//  <>
-//    <GlobalStyle />
-//    <Routes>
-//      <Route path="/" element={<SharedLayout />}>
-//        <Route index element={<Home />} />
-//        <Route path="movies" element={<Movies />} />
-//        <Route path="movies/:movieId" element={<MovieDetails />}>
-//          <Route path="cast" element={<Cast />} />
-//          <Route path="reviews" element={<Reviews />} />
-//        </Route>
-//        <Route path="*" element={<Error />} />
-//      </Route>
-//    </Routes>
-//  </>;
