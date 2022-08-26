@@ -15,22 +15,6 @@ import { contactsApi } from './contacts/contactsSlice';
 import { modalSlice } from './modal/modalSlice';
 import { authReducer } from './auth';
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
-// const middleware = middleware: getDefaultMiddleware => [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-//   contactsApi.middleware,
-// ];
-
 const authPersistConfig = {
   key: 'auth',
   storage,

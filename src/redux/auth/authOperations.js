@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -15,22 +16,22 @@ const token = {
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
-    console.log('~ Registerdata', data);
     token.set(data.token);
+    toast.success(`Welcome, ${data.user.name}!`);
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(`${error.message}. Please, try again.`);
   }
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
-    console.log('~ Logindata', data);
     token.set(data.token);
+    toast.success(`Welcome, ${data.user.name}!`);
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(`${error.message}. Please, try again.`);
   }
 });
 
@@ -39,9 +40,10 @@ const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     console.log('Logged out');
     token.unset();
+    toast.success(`You are logged out now.`);
   } catch (error) {
     console.log('~ error', error);
-    // TODO: Добавить обработку ошибки error.message
+    toast.error(`${error.message}. Please, try again.`);
   }
 });
 
@@ -52,17 +54,16 @@ const fetchCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue();
     }
 
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
+      toast.success(`Welcome back, ${data.name}!`);
       return data;
     } catch (error) {
-      console.log('~ error', error);
-      // TODO: Добавить обработку ошибки error.message
+      toast.error(`${error.message}. Please, try again.`);
     }
   }
 );
