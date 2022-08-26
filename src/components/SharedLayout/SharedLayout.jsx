@@ -1,14 +1,14 @@
 import { Suspense } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { Navigation, Link } from './SharedLayout.styled';
+import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+import { Navigation } from './SharedLayout.styled';
 import { Box } from 'components/Box';
 import Loader from 'components/Loader';
-import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import AuthNav from 'components/AuthNav';
+import MainNav from 'components/MainNav';
 
 const SharedLayout = ({ user }) => {
-  const location = useLocation();
   const dispatch = useDispatch();
 
   return (
@@ -23,12 +23,7 @@ const SharedLayout = ({ user }) => {
         as="header"
       >
         <Navigation>
-          <Link to="/" state={{ from: location }}>
-            Home
-          </Link>
-          <Link to="contacts" state={{ from: location }}>
-            My Contacts
-          </Link>
+          <MainNav />
           {user ? (
             <button
               type="button"

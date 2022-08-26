@@ -1,8 +1,4 @@
-// import { useSelector } from 'react-redux';
-import {
-  // Route, Redirect,
-  Navigate,
-} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export default function PublicRoute({
   children,
@@ -16,13 +12,3 @@ export default function PublicRoute({
   }
   return children;
 }
-
-// import { Navigate } from 'react-router-dom';
-
-// export default function PrivateRoute({ children, redirectTo = '/', user }) {
-//   if (!user) {
-//     return <Navigate to={redirectTo} />;
-//   }
-
-//   return children;
-// }

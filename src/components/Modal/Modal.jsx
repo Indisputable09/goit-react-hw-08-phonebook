@@ -12,6 +12,7 @@ const Modal = ({ onClose, children }) => {
         onClose();
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     document.body.style.overflow = 'hidden';
 

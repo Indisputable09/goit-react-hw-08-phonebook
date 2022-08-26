@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from './SharedLayout/SharedLayout.styled';
 
 const AuthNav = () => {

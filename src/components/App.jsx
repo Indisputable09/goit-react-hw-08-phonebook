@@ -1,21 +1,15 @@
-// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 // COMPONENTS
 import { GlobalStyle } from 'components/GlobalStyle';
-// import ContactForm from 'components/ContactForm';
-// import Filter from 'components/Filter';
-// import ContactList from 'components/ContactList';
-// import ContactsSection from 'components/Section';
 import { Section } from './App.styled';
-// import Loader from './Loader';
 import SharedLayout from './SharedLayout';
 import { lazy, useEffect } from 'react';
 import { authOperations, authSelectors } from 'redux/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import Toast from './Toast';
 
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));
@@ -36,15 +30,7 @@ export const App = () => {
   return (
     <Section>
       <GlobalStyle />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        theme={'colored'}
-        transition={Slide}
-        closeOnClick
-      />
+      <Toast />
       <Routes>
         <Route path="/" element={<SharedLayout user={isLoggedIn} />}>
           <Route index element={<Home />} />
