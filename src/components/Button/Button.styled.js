@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import Button from './Button';
 
-export const ButtonStyled = styled.button`
-  /* width: 200px; */
+export const ButtonStyled = styled(Button)`
   padding: 15px 50px;
   border-radius: 5px;
   border: none;
@@ -25,7 +25,6 @@ export const CloseButton = styled(ButtonStyled)`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-radius: 50%; */
 `;
 
 export const AddButton = styled(ButtonStyled)`
@@ -56,4 +55,19 @@ export const EditButton = styled(ButtonStyled)`
   border-radius: 10px;
   background-color: #45f5e6;
   transition: all 250ms linear;
+`;
+
+export const LogOutButton = styled(Button)`
+  padding: 16px 0;
+  /* border-radius: 5px; */
+  border: none;
+  background-color: inherit;
+  transition: all 250ms linear;
+  font-weight: 700;
+
+  :hover,
+  :focus {
+    color: ${p => p.theme.colors.yellow};
+    /* transform: scale(0.9); */
+  }
 `;

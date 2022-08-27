@@ -1,14 +1,21 @@
 import { Suspense } from 'react';
-import Button from '@mui/material/Button';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+// import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { AuthNavBlock, MainNavBlock, Navigation } from './SharedLayout.styled';
-import { Box } from 'components/Box';
+import {
+  AuthNavBlock,
+  MainNavBlock,
+  Navigation,
+  UserMenuBlock,
+} from './SharedLayout.styled';
 import Loader from 'components/Loader';
 import { authOperations } from 'redux/auth';
 import AuthNav from 'components/AuthNav';
 import MainNav from 'components/MainNav';
 import { CenteredLoader } from 'components/App.styled';
+import { Box } from 'components/Box';
+import { LogOutButton } from 'components/Button/Button.styled';
 
 const SharedLayout = ({ user }) => {
   const dispatch = useDispatch();
@@ -27,15 +34,18 @@ const SharedLayout = ({ user }) => {
       >
         <Navigation>
           <MainNavBlock>
-            <MainNav />
+            <MainNav user={user} />
           </MainNavBlock>
           {user ? (
-            <Button
-              type="button"
-              onClick={() => dispatch(authOperations.logOut())}
-            >
-              Log out
-            </Button>
+            <UserMenuBlock>
+              <AccountCircle />
+              <LogOutButton
+                type="button"
+                onClick={() => dispatch(authOperations.logOut())}
+              >
+                Log out
+              </LogOutButton>
+            </UserMenuBlock>
           ) : (
             <AuthNavBlock>
               <AuthNav />

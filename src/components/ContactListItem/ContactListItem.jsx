@@ -3,11 +3,12 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { ButtonsBlock, Line } from './ContactListItem.styled';
 import { useDeleteContactMutation } from 'redux/contacts/contactsSlice';
-import Button from 'components/Button';
+// import Button from 'components/Button';
 import Loader from 'components/Loader';
 import { showModalChange } from 'redux/modal/modalSlice';
 import { getShowModal } from 'redux/modal/modalSelectors';
 import ContactEditorModal from 'components/ContactEditorModal';
+import { ButtonStyled } from 'components/Button/Button.styled';
 
 const ContactListItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
@@ -33,10 +34,10 @@ const ContactListItem = ({ name, number, id }) => {
         {name}: <span>{number}</span>
       </Line>
       <ButtonsBlock>
-        <Button onClick={handleShowModal}>Edit</Button>
-        <Button onClick={handleDelete} disabled={isDeleting}>
+        <ButtonStyled onClick={handleShowModal}>Edit</ButtonStyled>
+        <ButtonStyled onClick={handleDelete} disabled={isDeleting}>
           {isDeleting ? <Loader /> : 'Delete'}
-        </Button>
+        </ButtonStyled>
       </ButtonsBlock>
       {showModal && <ContactEditorModal handleShowModal={handleShowModal} />}
     </>

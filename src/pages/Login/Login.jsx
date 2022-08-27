@@ -117,7 +117,7 @@ export default function Login() {
                 sx={{ mt: 3, mb: 2 }}
                 disabled={email === '' || password === ''}
               >
-                Sign In
+                Log In
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>

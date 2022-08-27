@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import { ButtonStyled } from './Button.styled';
 
 const Button = ({ type = 'button', disabled = false, children, ...props }) => {
   return (
-    <ButtonStyled type={type} disabled={disabled} {...props}>
+    <button type={type} disabled={disabled} {...props}>
       {children}
-    </ButtonStyled>
+    </button>
   );
 };
 // const Button = ({ type = 'button', children, isDeleting, click }) => {

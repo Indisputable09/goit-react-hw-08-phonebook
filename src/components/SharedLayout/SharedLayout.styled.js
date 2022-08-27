@@ -26,10 +26,19 @@ export const Link = styled(NavLink)`
 export const AuthNavBlock = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: ${p => p.theme.space[5]}px;
 `;
 export const MainNavBlock = styled.div`
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+  gap: ${p => p.theme.space[5]}px;
+`;
+
+export const UserMenuBlock = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   gap: ${p => p.theme.space[5]}px;
 `;
