@@ -20,7 +20,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
     toast.success(`Welcome, ${data.user.name}!`);
     return data;
   } catch (error) {
-    toast.error(`${error.message}. Please, try again.`);
+    toast.error(`Email adress or password is incorrect. Please, try again.`);
   }
 });
 
@@ -31,7 +31,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
     toast.success(`Welcome, ${data.user.name}!`);
     return data;
   } catch (error) {
-    toast.error(`${error.message}. Please, try again.`);
+    toast.error(`Email adress or password is incorrect. Please, try again.`);
   }
 });
 

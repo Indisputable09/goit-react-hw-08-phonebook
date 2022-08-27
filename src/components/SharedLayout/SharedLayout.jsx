@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { AuthNavBlock, MainNavBlock, Navigation } from './SharedLayout.styled';
@@ -28,12 +29,12 @@ const SharedLayout = ({ user }) => {
             <MainNav />
           </MainNavBlock>
           {user ? (
-            <button
+            <Button
               type="button"
               onClick={() => dispatch(authOperations.logOut())}
             >
               Log out
-            </button>
+            </Button>
           ) : (
             <AuthNavBlock>
               <AuthNav />
