@@ -1,76 +1,17 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
-
-// const Login = () => {
-// const dispatch = useDispatch();
-// const [email, setEmail] = useState('');
-// const [password, setPassword] = useState('');
-
-// const handleChange = ({ target: { name, value } }) => {
-//   switch (name) {
-//     case 'email':
-//       return setEmail(value);
-//     case 'password':
-//       return setPassword(value);
-//     default:
-//       return;
-//   }
-// };
-
-// const handleSubmit = async e => {
-//   e.preventDefault();
-//   await dispatch(authOperations.logIn({ email, password }));
-//   setEmail('');
-//   setPassword('');
-// };
-
-//   return (
-//     <div>
-//       <h1>Login</h1>
-
-//       <form onSubmit={handleSubmit} autoComplete="off">
-//         <label>
-//           Почта
-//           <input
-//             type="email"
-//             name="email"
-//             value={email}
-//             onChange={handleChange}
-//           />
-//         </label>
-
-//         <label>
-//           Пароль
-//           <input
-//             type="password"
-//             name="password"
-//             value={password}
-//             onChange={handleChange}
-//           />
-//         </label>
-
-//         <button type="submit">Log in</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-// ---------------------------------------------------
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { SwitchFormLink } from 'pages/Register/Register.styled';
+import { authOperations } from 'redux/auth';
 
 const theme = createTheme();
 
@@ -98,7 +39,7 @@ export default function Login() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="div" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -139,7 +80,7 @@ export default function Login() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Log in
             </Typography>
             <Box
               component="form"
@@ -174,12 +115,15 @@ export default function Login() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                disabled={email === '' || password === ''}
               >
                 Sign In
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link to="/register">{"Don't have an account? Sign Up"}</Link>
+                  <SwitchFormLink to="/register">
+                    Don't have an account? Sign Up
+                  </SwitchFormLink>
                 </Grid>
               </Grid>
             </Box>

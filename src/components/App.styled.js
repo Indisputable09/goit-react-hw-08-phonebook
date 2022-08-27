@@ -4,11 +4,11 @@ export const Section = styled.div`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 700;
   /* width: 800px; */
-  margin-top: 50px;
+  padding-top: 50px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
 
   /* border-radius: 30px; */
 

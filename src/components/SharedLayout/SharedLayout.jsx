@@ -8,6 +8,7 @@ import Loader from 'components/Loader';
 import { authOperations } from 'redux/auth';
 import AuthNav from 'components/AuthNav';
 import MainNav from 'components/MainNav';
+import { CenteredLoader } from 'components/App.styled';
 
 const SharedLayout = ({ user }) => {
   const dispatch = useDispatch();
@@ -43,7 +44,13 @@ const SharedLayout = ({ user }) => {
         </Navigation>
       </Box>
       <main>
-        <Suspense fallback={<Loader />}>
+        <Suspense
+          fallback={
+            <CenteredLoader>
+              <Loader size={50} />
+            </CenteredLoader>
+          }
+        >
           <Outlet />
         </Suspense>
       </main>

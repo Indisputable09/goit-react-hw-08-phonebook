@@ -9,9 +9,10 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import { authOperations } from 'redux/auth';
+// import { Link } from 'react-router-dom';
 import { Paper } from '@mui/material';
+import { authOperations } from 'redux/auth';
+import { SwitchFormLink } from './Register.styled';
 
 const theme = createTheme();
 
@@ -161,7 +162,7 @@ export default function Register() {
   // );
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="div" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
           item
@@ -247,12 +248,15 @@ export default function Register() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                disabled={name === '' || email === '' || password === ''}
               >
                 Sign In
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Link to="/login">Already have an account? Log in</Link>
+                  <SwitchFormLink to="/login">
+                    Already have an account? Log in
+                  </SwitchFormLink>
                 </Grid>
               </Grid>
             </Box>
