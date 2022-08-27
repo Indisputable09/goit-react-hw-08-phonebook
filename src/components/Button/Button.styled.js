@@ -34,12 +34,14 @@ export const AddButton = styled(ButtonStyled)`
   margin-left: auto;
 
   border-radius: 10px;
-  background-color: #45f5e6;
+  /* background-color: ${p => p.theme.colors.blue}; */
+  background-color: #45aef5;
   border: none;
   transition: all 250ms linear;
 
   :hover,
   :focus {
+    background-color: #969287;
     transform: scale(1.1);
   }
 `;

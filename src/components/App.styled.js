@@ -14,7 +14,7 @@ export const Section = styled.div`
 
   min-height: 100vh;
   text-align: center;
-  background-color: #fcfc81;
+  background-color: ${p => p.theme.colors.yellow};
   /* background-color: #fff; */
   /* background-image: linear-gradient(#45aef5, #fae441 70%); */
 `;

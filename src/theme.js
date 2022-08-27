@@ -9,9 +9,10 @@ export const theme = {
     secondary: '#5f0ee3',
     accent: '#609',
     muted: '#f6f6f6',
-    blue: '#45aef5',
-    // yellow: '#fae441',
-    yellow: '#fcfc81',
+    // blue: '#45aef5',
+    blue: '#73a9fa',
+    // yellow: '#fcfc81',
+    yellow: '#f4f7b0',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
