@@ -3,12 +3,13 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { ButtonsBlock, Line } from './ContactListItem.styled';
 import { useDeleteContactMutation } from 'redux/contacts/contactsSlice';
-// import Button from 'components/Button';
 import Loader from 'components/Loader';
 import { showModalChange } from 'redux/modal/modalSlice';
 import { getShowModal } from 'redux/modal/modalSelectors';
 import ContactEditorModal from 'components/ContactEditorModal';
-import { ButtonStyled } from 'components/Button/Button.styled';
+import { ListItemBlockButton } from 'components/Button/Button.styled';
+import DeletIcon from 'components/Icons/DeleteIcon/DeleteIcon';
+import EditIcon from 'components/Icons/EditIcon/EditIcon';
 
 const ContactListItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
@@ -34,10 +35,12 @@ const ContactListItem = ({ name, number, id }) => {
         {name}: <span>{number}</span>
       </Line>
       <ButtonsBlock>
-        <ButtonStyled onClick={handleShowModal}>Edit</ButtonStyled>
-        <ButtonStyled onClick={handleDelete} disabled={isDeleting}>
-          {isDeleting ? <Loader /> : 'Delete'}
-        </ButtonStyled>
+        <ListItemBlockButton onClick={handleShowModal}>
+          <EditIcon />
+        </ListItemBlockButton>
+        <ListItemBlockButton onClick={handleDelete} disabled={isDeleting}>
+          {isDeleting ? <Loader /> : <DeletIcon />}
+        </ListItemBlockButton>
       </ButtonsBlock>
       {showModal && <ContactEditorModal handleShowModal={handleShowModal} />}
     </>

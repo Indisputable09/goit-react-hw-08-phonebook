@@ -28,6 +28,7 @@ export const CloseButton = styled(ButtonStyled)`
 `;
 
 export const AddButton = styled(ButtonStyled)`
+  padding: 10px 50px;
   font-weight: 700;
   margin-top: 20px;
   margin-right: auto;
@@ -57,6 +58,10 @@ export const EditButton = styled(ButtonStyled)`
   border-radius: 10px;
   background-color: #45f5e6;
   transition: all 250ms linear;
+
+  /* @media screen and (min-width: 900px) {
+    padding: 20px 100px;
+  } */
 `;
 
 export const LogOutButton = styled(Button)`
@@ -71,5 +76,11 @@ export const LogOutButton = styled(Button)`
   :focus {
     color: ${p => p.theme.colors.yellow};
     /* transform: scale(0.9); */
+  }
+`;
+
+export const ListItemBlockButton = styled(ButtonStyled)`
+  @media screen and (min-width: 900px) {
+    padding: 20px 100px;
   }
 `;

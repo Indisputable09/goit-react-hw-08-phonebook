@@ -10,6 +10,7 @@ import {
   useGetContactsQuery,
 } from 'redux/contacts/contactsSlice';
 import { NAME_MATCH, SignupSchema } from 'constants/formConstants';
+import AddContactIcon from 'components/Icons/AddContactIcon/AddContactIcon';
 
 export const FormError = ({ name }) => {
   return (
@@ -89,7 +90,14 @@ const ContactForm = () => {
         />
         <FormError name="number" />
         <AddButton type="submit">
-          {isPosting ? <Loader /> : 'Add contact'}
+          {isPosting ? (
+            <Loader />
+          ) : (
+            <>
+              <AddContactIcon />
+              <p>Add Contact</p>
+            </>
+          )}
         </AddButton>
       </FormContainer>
     </Formik>

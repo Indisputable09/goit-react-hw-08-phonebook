@@ -30,7 +30,6 @@ const ContactEditorModal = ({ handleShowModal }) => {
         </CloseButton>
         <ModalForm onSubmit={handleUpdateContact} isUpdaiting={isUpdaiting} />
       </Modal>
-      ;
     </>
   );
 };
