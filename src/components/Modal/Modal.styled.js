@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
-  position: fixed;
+  position: ${p => p.theme.position.fixed};
   top: 0;
   left: 0;
   width: 100vw;
@@ -9,14 +9,14 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: ${p => p.theme.colors.modalBg};
   z-index: 1200;
 `;
 
 export const ModalWindow = styled.div`
-  position: relative;
-  background-color: #fff;
-  border-radius: 5px;
+  position: ${p => p.theme.position.relative};
+  background-color: ${p => p.theme.colors.white};
+  border-radius: ${p => p.theme.radii.sm};
   width: 600px;
   height: 300px;
 `;

@@ -11,10 +11,10 @@ export const theme = {
     muted: '#f6f6f6',
     blueButton: '#45aef5',
     blue: '#73a9fa',
-    // yellow: '#fcfc81',
     yellow: '#f4f7b0',
     greyHover: '#969287',
     lightGreen: '#45f5e6',
+    modalBg: 'rgba(0, 0, 0, 0.3)',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256, 'auto'],
   fonts: {

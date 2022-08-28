@@ -2,30 +2,23 @@ import styled from 'styled-components';
 
 export const Section = styled.div`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-weight: 700;
-  /* width: 800px; */
+  font-weight: ${p => p.theme.fontWeights.bold};
   padding-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  /* padding-top: 20px;
-  padding-bottom: 20px; */
-
-  /* border-radius: 30px; */
+  margin-left: ${p => p.theme.space[9]};
+  margin-right: ${p => p.theme.space[9]};
 
   min-height: 100vh;
   text-align: center;
   background-color: ${p => p.theme.colors.yellow};
-  /* background-color: #fff; */
-  /* background-image: linear-gradient(#45aef5, #fae441 70%); */
 `;
 
 export const Title = styled.h1`
-  font-size: 46px;
-  padding-top: 20px;
+  font-size: ${p => p.theme.fontSizes.xl};
+  padding-top: ${p => p.theme.space[4]}px;
 `;
 
 export const CenteredLoader = styled.div`
-  position: fixed;
+  position: ${p => p.theme.position.fixed};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
