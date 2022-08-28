@@ -31,6 +31,7 @@ const SharedLayout = ({ user }) => {
         top="0"
         left="0"
         width="100%"
+        zIndex="1000"
       >
         <Navigation>
           <MainNavBlock>
