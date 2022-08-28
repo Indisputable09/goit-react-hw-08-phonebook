@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,21 +15,6 @@ const ContactListItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const showModal = useSelector(getShowModal);
   const dispatch = useDispatch();
-  const [onHoverEdit, setOnHoverEdit] = useState(false);
-  const [onHoverDelete, setOnHoverDelete] = useState(false);
-
-  const handleOnMouseOverEdit = () => {
-    setOnHoverEdit(true);
-  };
-  const handleOnMouseOutEdit = () => {
-    setOnHoverEdit(false);
-  };
-  const handleOnMouseOverDelete = () => {
-    setOnHoverDelete(true);
-  };
-  const handleOnMouseOutDelete = () => {
-    setOnHoverDelete(false);
-  };
 
   const handleShowModal = () => {
     dispatch(showModalChange({ name, number, id }));
@@ -51,20 +35,11 @@ const ContactListItem = ({ name, number, id }) => {
         {name}: <span>{number}</span>
       </Line>
       <ButtonsBlock>
-        <ListItemBlockButton
-          onClick={handleShowModal}
-          onMouseOver={handleOnMouseOverEdit}
-          onMouseOut={handleOnMouseOutEdit}
-        >
-          <EditIcon onHover={onHoverEdit} />
+        <ListItemBlockButton onClick={handleShowModal}>
+          <EditIcon />
         </ListItemBlockButton>
-        <ListItemBlockButton
-          onClick={handleDelete}
-          disabled={isDeleting}
-          onMouseOver={handleOnMouseOverDelete}
-          onMouseOut={handleOnMouseOutDelete}
-        >
-          {isDeleting ? <Loader /> : <DeletIcon onHover={onHoverDelete} />}
+        <ListItemBlockButton onClick={handleDelete} disabled={isDeleting}>
+          {isDeleting ? <Loader /> : <DeletIcon />}
         </ListItemBlockButton>
       </ButtonsBlock>
       {showModal && <ContactEditorModal handleShowModal={handleShowModal} />}

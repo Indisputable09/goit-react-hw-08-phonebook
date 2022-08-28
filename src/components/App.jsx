@@ -20,6 +20,7 @@ const Error = lazy(() => import('pages/Error'));
 export const App = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -29,36 +30,46 @@ export const App = () => {
     <Section>
       <GlobalStyle />
       <Toast />
-      <Routes>
-        <Route path="/" element={<SharedLayout user={isLoggedIn} />}>
-          <Route index element={<Home />} />
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute user={isLoggedIn}>
-                <Contacts />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute restricted redirectTo="/contacts" user={isLoggedIn}>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute restricted redirectTo="/contacts" user={isLoggedIn}>
-                <Register />
-              </PublicRoute>
-            }
-          />
-          <Route path="*" element={<Error />} />
-        </Route>
-      </Routes>
+      {!isFetchingCurrentUser && (
+        <Routes>
+          <Route path="/" element={<SharedLayout user={isLoggedIn} />}>
+            <Route index element={<Home />} />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute user={isLoggedIn}>
+                  <Contacts />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute
+                  restricted
+                  redirectTo="/contacts"
+                  user={isLoggedIn}
+                >
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute
+                  restricted
+                  redirectTo="/contacts"
+                  user={isLoggedIn}
+                >
+                  <Register />
+                </PublicRoute>
+              }
+            />
+            <Route path="*" element={<Error />} />
+          </Route>
+        </Routes>
+      )}
     </Section>
   );
 };

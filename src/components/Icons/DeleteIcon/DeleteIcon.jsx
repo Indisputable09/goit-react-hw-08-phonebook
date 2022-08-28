@@ -1,16 +1,10 @@
-import { ImBin } from 'react-icons/im';
 import { useMedia } from 'react-use';
-import { theme } from 'theme';
+import { DeleteIconStyled } from '../Icons.styled';
 
-const DeletIcon = ({ onHover }) => {
+const DeletIcon = () => {
   const isLapTop = useMedia('(min-width: 900px)');
 
-  return (
-    <ImBin
-      size={isLapTop ? 24 : 20}
-      fill={onHover ? theme.colors.white : theme.colors.black}
-    />
-  );
+  return <DeleteIconStyled size={isLapTop ? 24 : 20} />;
 };
 
 export default DeletIcon;
