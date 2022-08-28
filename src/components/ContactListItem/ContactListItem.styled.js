@@ -4,10 +4,10 @@ export const Line = styled.p`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: ${p => p.theme.space[3]}px;
 `;
 
 export const ButtonsBlock = styled.div`
   display: flex;
-  gap: 10px;
+  gap: ${p => p.theme.space[3]}px;
 `;
