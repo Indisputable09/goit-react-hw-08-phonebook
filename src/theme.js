@@ -9,12 +9,14 @@ export const theme = {
     secondary: '#5f0ee3',
     accent: '#609',
     muted: '#f6f6f6',
-    // blue: '#45aef5',
+    blueButton: '#45aef5',
     blue: '#73a9fa',
     // yellow: '#fcfc81',
     yellow: '#f4f7b0',
+    greyHover: '#969287',
+    lightGreen: '#45f5e6',
   },
-  space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
+  space: [0, 2, 4, 8, 16, 32, 64, 128, 256, 'auto'],
   fonts: {
     body: 'system-ui, sans-serif',
     heading: 'system-ui, sans-serif',
@@ -50,6 +52,8 @@ export const theme = {
     transform: 'transform 300ms cubic-bezier(0.4, 0, 0.2, 1)',
     boxShadow: 'box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)',
     color: 'color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+    backgroundColor: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+    all: 'all 250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
   borders: {
     none: 'none',
@@ -65,5 +69,11 @@ export const theme = {
     md: '8px',
     lg: '16px',
     round: '50%',
+  },
+  position: {
+    fixed: 'fixed',
+    absolute: 'absolute',
+    relative: 'relative',
+    static: 'static',
   },
 };

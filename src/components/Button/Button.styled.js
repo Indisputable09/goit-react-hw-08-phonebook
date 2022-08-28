@@ -2,11 +2,10 @@ import styled from 'styled-components';
 import Button from './Button';
 
 export const ButtonStyled = styled(Button)`
-  padding: 15px 50px;
-  border-radius: 5px;
-  border: none;
-  background-color: #fff;
-  transition: all 250ms linear;
+  border-radius: ${p => p.theme.radii.sm};
+  border: ${p => p.theme.borders.none};
+  background-color: ${p => p.theme.colors.white};
+  transition: ${p => p.theme.transition.all};
 
   :hover,
   :focus {
@@ -16,59 +15,57 @@ export const ButtonStyled = styled(Button)`
 `;
 
 export const CloseButton = styled(ButtonStyled)`
-  position: absolute;
+  position: ${p => p.theme.position.absolute};
   top: 2%;
   right: 2%;
-  padding: 0;
-  width: 30px;
-  height: 30px;
+  padding: ${p => p.theme.space[0]}px;
+  width: ${p => p.theme.space[5]}px;
+  height: ${p => p.theme.space[5]}px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const AddButton = styled(ButtonStyled)`
-  padding: 10px 20px;
-  width: 200px;
-  height: 60px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: auto;
+  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
+  width: ${p => p.theme.space[8]}px;
+  height: ${p => p.theme.space[6]}px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  margin-top: ${p => p.theme.space[4]}px;
+  margin-right: ${p => p.theme.space[9]};
+  margin-left: ${p => p.theme.space[9]};
 
   border-radius: 10px;
-  /* background-color: ${p => p.theme.colors.blue}; */
-  background-color: #45aef5;
-  border: none;
-  transition: all 250ms linear;
+  background-color: ${p => p.theme.colors.blueButton};
+  border: ${p => p.theme.radii.none};
+  transition: ${p => p.theme.transition.all};
 
   :hover,
   :focus {
-    background-color: #969287;
+    background-color: ${p => p.theme.colors.greyHover};
     transform: scale(1.1);
   }
 `;
 
 export const EditButton = styled(ButtonStyled)`
-  font-weight: 700;
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: auto;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  margin-top: ${p => p.theme.space[4]}px;
+  margin-right: ${p => p.theme.space[9]};
+  margin-left: ${p => p.theme.space[9]};
 
-  padding: 20px 70px;
+  padding: ${p => p.theme.space[4]}px ${p => p.theme.space[6]}px;
 
-  border-radius: 10px;
-  background-color: #45f5e6;
-  transition: all 250ms linear;
+  border-radius: ${p => p.theme.radii.md};
+  background-color: ${p => p.theme.colors.lightGreen};
+  transition: ${p => p.theme.transition.all};
 `;
 
 export const LogOutButton = styled(Button)`
-  padding: 16px 0;
-  /* border-radius: 5px; */
-  border: none;
+  padding: ${p => p.theme.space[4]}px ${p => p.theme.space[0]}px;
+  border: ${p => p.theme.radii.none};
   background-color: inherit;
-  transition: all 250ms linear;
-  font-weight: 700;
+  transition: ${p => p.theme.transition.all};
+  font-weight: ${p => p.theme.fontWeights.bold};
 
   :hover,
   :focus {
@@ -77,11 +74,11 @@ export const LogOutButton = styled(Button)`
 `;
 
 export const ListItemBlockButton = styled(ButtonStyled)`
-  padding: 10px 20px;
-  width: 100px;
-  height: 40px;
+  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
+  width: ${p => p.theme.space[7]}px;
+  height: ${p => p.theme.space[5]}px;
   @media screen and (min-width: 900px) {
-    width: 200px;
-    height: 60px;
+    width: ${p => p.theme.space[8]}px;
+    height: ${p => p.theme.space[6]}px;
   }
 `;
