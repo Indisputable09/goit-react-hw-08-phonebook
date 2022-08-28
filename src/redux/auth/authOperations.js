@@ -38,11 +38,9 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/users/logout');
-    console.log('Logged out');
     token.unset();
     toast.success(`You are logged out now.`);
   } catch (error) {
-    console.log('~ error', error);
     toast.error(`${error.message}. Please, try again.`);
   }
 });

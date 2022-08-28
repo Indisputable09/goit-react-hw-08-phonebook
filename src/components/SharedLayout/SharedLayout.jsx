@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-// import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import {
   AuthNavBlock,
@@ -10,7 +9,7 @@ import {
   UserMenuBlock,
 } from './SharedLayout.styled';
 import Loader from 'components/Loader';
-import { authOperations } from 'redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
 import AuthNav from 'components/AuthNav';
 import MainNav from 'components/MainNav';
 import { CenteredLoader } from 'components/App.styled';
@@ -19,6 +18,7 @@ import { LogOutButton } from 'components/Button/Button.styled';
 
 const SharedLayout = ({ user }) => {
   const dispatch = useDispatch();
+  const name = useSelector(authSelectors.getUsername);
 
   return (
     <>
@@ -39,6 +39,7 @@ const SharedLayout = ({ user }) => {
           </MainNavBlock>
           {user ? (
             <UserMenuBlock>
+              <p>{name}</p>
               <AccountCircle />
               <LogOutButton
                 type="button"
