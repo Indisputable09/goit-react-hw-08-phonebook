@@ -16,13 +16,20 @@ const ContactListItem = ({ name, number, id }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const showModal = useSelector(getShowModal);
   const dispatch = useDispatch();
-  const [onHover, setOnHover] = useState(false);
+  const [onHoverEdit, setOnHoverEdit] = useState(false);
+  const [onHoverDelete, setOnHoverDelete] = useState(false);
 
-  const handleOnMouseOver = () => {
-    setOnHover(true);
+  const handleOnMouseOverEdit = () => {
+    setOnHoverEdit(true);
   };
-  const handleOnMouseOut = () => {
-    setOnHover(false);
+  const handleOnMouseOutEdit = () => {
+    setOnHoverEdit(false);
+  };
+  const handleOnMouseOverDelete = () => {
+    setOnHoverDelete(true);
+  };
+  const handleOnMouseOutDelete = () => {
+    setOnHoverDelete(false);
   };
 
   const handleShowModal = () => {
@@ -46,18 +53,18 @@ const ContactListItem = ({ name, number, id }) => {
       <ButtonsBlock>
         <ListItemBlockButton
           onClick={handleShowModal}
-          onMouseOver={handleOnMouseOver}
-          onMouseOut={handleOnMouseOut}
+          onMouseOver={handleOnMouseOverEdit}
+          onMouseOut={handleOnMouseOutEdit}
         >
-          <EditIcon onHover={onHover} />
+          <EditIcon onHover={onHoverEdit} />
         </ListItemBlockButton>
         <ListItemBlockButton
           onClick={handleDelete}
           disabled={isDeleting}
-          onMouseOver={handleOnMouseOver}
-          onMouseOut={handleOnMouseOut}
+          onMouseOver={handleOnMouseOverDelete}
+          onMouseOut={handleOnMouseOutDelete}
         >
-          {isDeleting ? <Loader /> : <DeletIcon onHover={onHover} />}
+          {isDeleting ? <Loader /> : <DeletIcon onHover={onHoverDelete} />}
         </ListItemBlockButton>
       </ButtonsBlock>
       {showModal && <ContactEditorModal handleShowModal={handleShowModal} />}

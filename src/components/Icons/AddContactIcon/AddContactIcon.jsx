@@ -1,6 +1,6 @@
-const { AddContactIconStyled } = require('../Icons.styled');
+import { AiOutlineUserAdd } from 'react-icons/ai';
 
 const AddContactIcon = () => {
-  return <AddContactIconStyled size={25} />;
+  return <AiOutlineUserAdd size={25} fill="white" />;
 };
 export default AddContactIcon;
