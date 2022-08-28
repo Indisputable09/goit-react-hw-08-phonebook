@@ -17,14 +17,16 @@ export const PhoneBookIconStyled = styled(RiContactsBookLine)`
 export const DeleteIconStyled = styled(ImBin)`
   :hover,
   :focus {
-    color: ${p => p.theme.colors.white};
+    color: ${p =>
+      p.hover === 'true' ? p.theme.colors.white : p.theme.colors.black};
   }
 `;
 
 export const EditIconStyled = styled(MdOutlineEdit)`
   :hover,
   :focus {
-    color: ${p => p.theme.colors.white};
+    color: ${p =>
+      p.hover === 'true' ? p.theme.colors.white : p.theme.colors.black};
   }
 `;
 

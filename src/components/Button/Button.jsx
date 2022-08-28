@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const Button = ({ type = 'button', disabled = false, children, ...props }) => {
+  // console.log('~ props', props);
   return (
     <button type={type} disabled={disabled} {...props}>
       {children}
