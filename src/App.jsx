@@ -6,11 +6,11 @@ import { authOperations, authSelectors } from 'redux/auth';
 // COMPONENTS
 import { GlobalStyle } from 'components/GlobalStyle';
 import { CenteredLoader, Section } from './App.styled';
-import SharedLayout from './SharedLayout';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
-import Toast from './Toast';
-import Loader from './Loader';
+import SharedLayout from './components/SharedLayout';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import PublicRoute from './components/Routes/PublicRoute';
+import Toast from './components/Toast';
+import Loader from './components/Loader';
 
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));

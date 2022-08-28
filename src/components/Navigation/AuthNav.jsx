@@ -1,4 +1,4 @@
-import { Link } from './SharedLayout/SharedLayout.styled';
+import { Link } from '../SharedLayout/SharedLayout.styled';
 
 const AuthNav = () => {
   return (

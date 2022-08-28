@@ -10,9 +10,9 @@ import {
 } from './SharedLayout.styled';
 import Loader from 'components/Loader';
 import { authOperations, authSelectors } from 'redux/auth';
-import AuthNav from 'components/AuthNav';
-import MainNav from 'components/MainNav';
-import { CenteredLoader } from 'components/App.styled';
+import AuthNav from 'components/Navigation/AuthNav';
+import MainNav from 'components/Navigation/MainNav';
+import { CenteredLoader } from 'App.styled';
 import { Box } from 'components/Box';
 import { LogOutButton } from 'components/Button/Button.styled';
 

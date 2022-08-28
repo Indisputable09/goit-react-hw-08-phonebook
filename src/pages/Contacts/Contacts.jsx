@@ -1,4 +1,4 @@
-import { CenteredLoader } from 'components/App.styled';
+import { CenteredLoader } from 'App.styled';
 import Loader from 'components/Loader';
 import PhonebookContent from 'components/PhonebookContent';
 import { useEffect } from 'react';
