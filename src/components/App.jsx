@@ -5,11 +5,12 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { authOperations, authSelectors } from 'redux/auth';
 // COMPONENTS
 import { GlobalStyle } from 'components/GlobalStyle';
-import { Section } from './App.styled';
+import { CenteredLoader, Section } from './App.styled';
 import SharedLayout from './SharedLayout';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import Toast from './Toast';
+import Loader from './Loader';
 
 const Home = lazy(() => import('pages/Home'));
 const Contacts = lazy(() => import('pages/Contacts'));
@@ -30,7 +31,11 @@ export const App = () => {
     <Section>
       <GlobalStyle />
       <Toast />
-      {!isFetchingCurrentUser && (
+      {isFetchingCurrentUser ? (
+        <CenteredLoader>
+          <Loader size={50} />
+        </CenteredLoader>
+      ) : (
         <Routes>
           <Route path="/" element={<SharedLayout user={isLoggedIn} />}>
             <Route index element={<Home />} />
