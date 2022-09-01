@@ -1,15 +1,28 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+// import Avatar from '@mui/material/Avatar';
+// import Button from '@mui/material/Button';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Typography,
+  createTheme,
+  ThemeProvider,
+  Paper,
+} from '@mui/material';
+// import Button from '@mui/material/Button';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import TextField from '@mui/material/TextField';
+// import Grid from '@mui/material/Grid';
+// import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Paper } from '@mui/material';
+// import Typography from '@mui/material/Typography';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { Paper } from '@mui/material';
 import { authOperations } from 'redux/auth';
 import { SwitchFormLink } from './Register.styled';
 
