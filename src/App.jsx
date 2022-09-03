@@ -1,4 +1,5 @@
 import { lazy, useEffect } from 'react';
+import { useMedia } from 'react-use';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -20,6 +21,7 @@ const Error = lazy(() => import('pages/Error'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isMobile = useMedia('(max-width: 480px)');
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
@@ -33,7 +35,7 @@ export const App = () => {
       <Toast />
       {isFetchingCurrentUser ? (
         <CenteredLoader>
-          <Loader size={50} />
+          <Loader size={isMobile ? 30 : 50} />
         </CenteredLoader>
       ) : (
         <Routes>

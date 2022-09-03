@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { useMedia } from 'react-use';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
@@ -17,6 +18,7 @@ import { Box } from 'components/Box';
 import { LogOutButton } from 'components/Button/Button.styled';
 
 const SharedLayout = ({ user }) => {
+  const isMobile = useMedia('(max-width: 480px)');
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
 
@@ -39,14 +41,25 @@ const SharedLayout = ({ user }) => {
           </MainNavBlock>
           {user ? (
             <UserMenuBlock>
-              <p>{name}</p>
-              <AccountCircle />
-              <LogOutButton
-                type="button"
-                onClick={() => dispatch(authOperations.logOut())}
-              >
-                Log out
-              </LogOutButton>
+              {isMobile ? (
+                <LogOutButton
+                  type="button"
+                  onClick={() => dispatch(authOperations.logOut())}
+                >
+                  Log out
+                </LogOutButton>
+              ) : (
+                <>
+                  <p>{name}</p>
+                  <AccountCircle />
+                  <LogOutButton
+                    type="button"
+                    onClick={() => dispatch(authOperations.logOut())}
+                  >
+                    Log out
+                  </LogOutButton>
+                </>
+              )}
             </UserMenuBlock>
           ) : (
             <AuthNavBlock>
@@ -59,7 +72,7 @@ const SharedLayout = ({ user }) => {
         <Suspense
           fallback={
             <CenteredLoader>
-              <Loader size={50} />
+              <Loader size={isMobile ? 30 : 50} />
             </CenteredLoader>
           }
         >

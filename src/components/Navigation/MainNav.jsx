@@ -9,11 +9,9 @@ const MainNav = () => {
     <>
       <PhonebookIcon user={isLoggedIn} />
       <Link to="/">Home</Link>
-      {isLoggedIn && <Link to="contacts">My Contacts</Link>}
+      {isLoggedIn && <Link to="contacts">Contacts</Link>}
     </>
   );
 };
 
 export default MainNav;
-
-// color={isLoggedIn ? 'white' : 'black'}

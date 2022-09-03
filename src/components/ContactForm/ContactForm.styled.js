@@ -2,17 +2,25 @@ import { Form, Field } from 'formik';
 import styled from 'styled-components';
 
 export const FormContainer = styled(Form)`
-  width: 400px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin-left: ${p => p.theme.space[9]};
   margin-right: ${p => p.theme.space[9]};
+
+  @media screen and (min-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const Label = styled.label`
-  font-size: ${p => p.theme.fontSizes.l};
+  font-size: ${p => p.theme.fontSizes.m};
   margin-top: ${p => p.theme.space[3]}px;
   margin-bottom: ${p => p.theme.space[4]}px;
+
+  @media screen and (min-width: 480px) {
+    font-size: ${p => p.theme.fontSizes.l};
+  }
 `;
 
 export const Input = styled(Field)`

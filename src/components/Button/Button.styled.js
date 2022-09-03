@@ -28,7 +28,7 @@ export const CloseButton = styled(ButtonStyled)`
 
 export const AddButton = styled(ButtonStyled)`
   padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
-  width: ${p => p.theme.space[8]}px;
+  width: ${p => p.theme.space[7]}px;
   height: ${p => p.theme.space[6]}px;
   font-weight: ${p => p.theme.fontWeights.bold};
   margin-top: ${p => p.theme.space[4]}px;
@@ -44,6 +44,10 @@ export const AddButton = styled(ButtonStyled)`
   :focus {
     background-color: ${p => p.theme.colors.greyHover};
     transform: scale(1.1);
+  }
+
+  @media screen and (min-width: 480px) {
+    width: ${p => p.theme.space[8]}px;
   }
 `;
 
@@ -74,9 +78,14 @@ export const LogOutButton = styled(Button)`
 `;
 
 export const ListItemBlockButton = styled(ButtonStyled)`
-  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
-  width: ${p => p.theme.space[7]}px;
+  padding: ${p => p.theme.space[2]}px ${p => p.theme.space[5]}px;
   height: ${p => p.theme.space[5]}px;
+
+  @media screen and (min-width: 480px) {
+    width: ${p => p.theme.space[7]}px;
+    padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
+  }
+
   @media screen and (min-width: 900px) {
     width: ${p => p.theme.space[8]}px;
     height: ${p => p.theme.space[6]}px;

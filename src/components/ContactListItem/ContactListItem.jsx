@@ -39,7 +39,7 @@ const ContactListItem = ({ name, number, id }) => {
           <EditIcon />
         </ListItemBlockButton>
         <ListItemBlockButton onClick={handleDelete} disabled={isDeleting}>
-          {isDeleting ? <Loader /> : <DeletIcon />}
+          {isDeleting ? <Loader size={8} /> : <DeletIcon />}
         </ListItemBlockButton>
       </ButtonsBlock>
       {showModal && <ContactEditorModal handleShowModal={handleShowModal} />}

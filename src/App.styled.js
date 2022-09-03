@@ -13,8 +13,12 @@ export const Section = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: ${p => p.theme.fontSizes.xl};
+  font-size: ${p => p.theme.fontSizes.l};
   padding-top: ${p => p.theme.space[4]}px;
+
+  @media screen and (min-width: 480px) {
+    font-size: ${p => p.theme.fontSizes.xl};
+  }
 `;
 
 export const CenteredLoader = styled.div`
